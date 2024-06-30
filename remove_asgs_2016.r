@@ -4,8 +4,15 @@ if (length(args) != 1) {
   stop("Only one argument must be supplied (input directory).\n", call. = FALSE)
 } 
 
-# Remove files with the format MB_2016
-files_to_remove <- list.files(args[1], pattern = "MB_2016", full.names = TRUE)
-unlink(files_to_remove)
+# Remove files with the format *xyz*
+rem_files <- function(ptn) {
+  ptn <- paste0(".*", ptn, ".*")
+  files_to_remove <- list.files(args[1], pattern = ptn, full.names = TRUE, recursive = TRUE)
+  file.remove(files_to_remove)
 
-cat("Files with the format 'MB_2016' have been deleted.\n")
+  cat(paste0("Files with the format'", ptn, "' have been deleted.\n"))
+}
+
+#remove them
+rem_files("MB_2016")
+rem_files("MESH_BLOCK_2016")
