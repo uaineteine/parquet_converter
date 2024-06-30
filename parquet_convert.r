@@ -7,7 +7,7 @@ if (length(args) != 1) {
 # Suppress warnings globally
 options(warn = -1)
 
-suppressWarnings({
+suppressMessages(suppressWarnings({
 
 # Load necessary libraries
 library(readr)
@@ -52,4 +52,4 @@ convert_to_parquet <- function(directory) {
 
 convert_to_parquet(args[1])
 
-})
+}))
