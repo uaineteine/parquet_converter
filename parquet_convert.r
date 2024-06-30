@@ -4,6 +4,11 @@ if (length(args) != 1) {
   stop("Only one argument must be supplied (input file).\n", call. = FALSE)
 } 
 
+# Suppress warnings globally
+options(warn = -1)
+
+suppressWarnings({
+
 # Load necessary libraries
 library(readr)
 library(arrow)
@@ -46,3 +51,5 @@ convert_to_parquet <- function(directory) {
 }
 
 convert_to_parquet(args[1])
+
+})
