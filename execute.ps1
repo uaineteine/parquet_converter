@@ -5,4 +5,9 @@ $destinationDir = "E:\GNAF\data\2024\MAY"
 # Call the unzip script with the defined variables
 & .\unpack_zip.ps1 -zipFilePath $zipFilePath -destinationDir $destinationDir
 
+# Execute the R script with the directory path argument
+$directory_path = $destinationDir -replace '\\', '/'
 
+$rsc = "H:\Program Files\R\R-4.3.2\bin\x64\Rscript.exe"
+$rspt = "E:/GNAF/process_supply/parquet_convert.r"
+& $rsc --vanilla $rspt $directory_path
