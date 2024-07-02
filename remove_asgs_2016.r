@@ -15,4 +15,5 @@ rem_files <- function(ptn) {
 
 #remove them
 rem_files("MB_2016")
+rem_files("MB_2021")
 rem_files("MESH_BLOCK_2016")
