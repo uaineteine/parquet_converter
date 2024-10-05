@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+      - workflow_test
 
 jobs:
   run-rscript:
