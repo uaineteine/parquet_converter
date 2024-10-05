@@ -20,10 +20,22 @@ jobs:
       with:
         r-version: '4.1.0'  # Specify the R version you need
 
-    - name: Install R packages
+    - name: Install readr package
       run: |
-        Rscript -e 'install.packages(c("readr", "arrow", "fs"), repos="https://cloud.r-project.org")'
+        Rscript -e 'install.packages("readr", repos="https://cloud.r-project.org")'
+
+    - name: Install arrow package
+      run: |
+        Rscript -e 'install.packages("arrow", repos="https://cloud.r-project.org")'
+
+    - name: Install fs package
+      run: |
+        Rscript -e 'install.packages("fs", repos="https://cloud.r-project.org")'
 
     - name: Run R script
       run: |
         Rscript parquet_converter.r testdata
+
+    - name: List files in testdata folder
+      run: |
+        ls testdata
