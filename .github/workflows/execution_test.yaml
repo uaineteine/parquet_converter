@@ -3,9 +3,8 @@ name: Execution Test
 on:
   push:
     branches:
-      - main
+      - master
       - development
-      - workflow_test
 
 jobs:
   run-rscript:
