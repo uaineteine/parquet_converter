@@ -31,13 +31,6 @@ read_input <- function(filepath, format) {
   return (data)
 }
 
-convert_to_parquet <- function(directory) {
-  # Get a list of all files (including sub-folders) in the directory
-  all_files <- dir_ls(directory, regexp = "\\.psv$", recurse = TRUE)
-  
-  # Calculate the total size of all files
-}
-
 convert_to_parquet <- function(directory, format="psv") {
   # Get a list of all files (including sub-folders) in the directory
   all_files <- dir_ls(directory, regexp = "\\.psv$", recurse = TRUE)
