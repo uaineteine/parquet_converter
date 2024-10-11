@@ -20,11 +20,11 @@ read_input <- function(filepath, format) {
   if (format == "csv") {
     data <- read_csv(filepath)
   } else if (format == "psv") {
-    data <- read_delim(file, delim = "|")
+    data <- read_delim(filepath, delim = "|")
   } else if (format == "sas7bdat'") {
-    data <- read_sas(file)
+    data <- read_sas(filepath)
   } else if (format == "xlsx") {
-    data <- read_excel(file)
+    data <- read_excel(filepath)
   } else {
     stop("Unsupported file format: ", format, call. = FALSE)
   }
@@ -76,4 +76,4 @@ convert_to_parquet <- function(directory, format="csv") {
   cat("Parquet conversion completed!\n")
 }
 
-convert_to_parquet(args[1], args[2])
+convert_to_parquet(args[1], format=args[2])
