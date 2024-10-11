@@ -18,6 +18,10 @@ jobs:
       with:
         r-version: '4.1.0'  # Specify the R version you need
 
+    - name: Install readxl package
+      run: |
+        Rscript -e 'install.packages("readxl", repos="https://cloud.r-project.org")'
+        
     - name: Install readr package
       run: |
         Rscript -e 'install.packages("readr", repos="https://cloud.r-project.org")'

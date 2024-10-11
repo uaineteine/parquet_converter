@@ -11,6 +11,7 @@ This script converts an input directory of target file types to Parquet format i
 
 - R (version 3.5 or higher)
 - The following R packages:
+  - `readxl`
   - `readr`
   - `arrow`
   - `haven`

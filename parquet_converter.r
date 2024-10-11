@@ -11,6 +11,7 @@ suppressMessages(suppressWarnings({
 
 # Load necessary libraries
 library(readr)
+library(readxl)
 library(arrow)
 library(haven)
 library(fs)
