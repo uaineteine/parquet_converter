@@ -1,4 +1,4 @@
-# Parquet Converter v1.0
+# Parquet Converter v1.0 [![Execution Test](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml/badge.svg)](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml)
 
 This script converts all pipe-delimited (`.psv`) files in a specified directory to Parquet format.
 
