@@ -38,6 +38,7 @@ jobs:
       run: |
         Rscript parquet_converter.r testdata psv
         Rscript parquet_converter.r testdata csv
+        Rscript parquet_converter.r testdata xlsx
 
     - name: List files in testdata folder
       run: |
