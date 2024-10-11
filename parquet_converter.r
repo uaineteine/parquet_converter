@@ -20,6 +20,10 @@ read_input <- function(filepath, format) {
     data <- read_csv(filepath)
   } else if (format == "psv") {
     data <- read_delim(file, delim = "|")
+  } else if (format == "sas'") {
+    data <- read_sas(file)
+  } else if (format == "xlsx") {
+    data <- read_excel(file)
   } else {
     stop("Unsupported file format: ", format, call. = FALSE)
   }
