@@ -14,6 +14,7 @@ library(readr)
 library(arrow)
 library(haven)
 library(fs)
+}))
 
 read_input <- function(filepath, format) {
   if (format == "csv") {
@@ -74,5 +75,3 @@ convert_to_parquet <- function(directory, format="psv") {
 }
 
 convert_to_parquet(args[1])
-
-}))
