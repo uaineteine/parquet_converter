@@ -45,7 +45,7 @@ Completion Message: Prints a message upon completion of the conversion process.
 
 ## Example
 ```sh
-./convert_to_parquet.R /path/to/your/directory
+./convert_to_parquet.R /path/to/your/directory psv
 ```
 
 This command will convert all .psv files in /path/to/your/directory to Parquet format.
