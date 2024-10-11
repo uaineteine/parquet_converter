@@ -16,6 +16,8 @@ library(haven)
 library(fs)
 }))
 
+#write_xpt(df, "data4.sas7bdat")
+
 read_input <- function(filepath, format) {
   if (format == "csv") {
     data <- read_csv(filepath)
