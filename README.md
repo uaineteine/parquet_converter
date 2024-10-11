@@ -21,7 +21,7 @@ This script converts an input directory of target file types to Parquet format i
 To run the script, use the following command:
 
 ```sh
-./convert_to_parquet.R <directory>
+./convert_to_parquet.R <directory> <format>
 ```
 
 Replace <directory> with the path to the directory containing the .psv files.
