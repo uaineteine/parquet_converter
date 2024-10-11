@@ -33,7 +33,7 @@ read_input <- function(filepath, format) {
 
 search_files <- function(directory, format) {
   #add the dot
-  file_xtn <- paste0("." + format)
+  file_xtn <- paste0(".", format)
 
   #idetnify all files with regex
   all_files <- dir_ls(directory, regexp = paste0("\\", file_xtn, "$"), recurse = TRUE)
