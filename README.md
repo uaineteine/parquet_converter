@@ -1,4 +1,4 @@
-# Parquet Converter 
+# Parquet Converter v1.0
 
 This script converts all pipe-delimited (`.psv`) files in a specified directory to Parquet format.
 
