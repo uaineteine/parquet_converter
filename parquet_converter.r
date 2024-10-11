@@ -12,9 +12,28 @@ suppressMessages(suppressWarnings({
 # Load necessary libraries
 library(readr)
 library(arrow)
+library(haven)
 library(fs)
 
+read_input <- function(filepath, format) {
+  if (format == "csv") {
+    data <- read_csv(filepath)
+  } else if (format == "psv") {
+    data <- read_delim(file, delim = "|")
+  } else {
+    stop("Unsupported file format: ", format, call. = FALSE)
+  }
+  return (data)
+}
+
 convert_to_parquet <- function(directory) {
+  # Get a list of all files (including sub-folders) in the directory
+  all_files <- dir_ls(directory, regexp = "\\.psv$", recurse = TRUE)
+  
+  # Calculate the total size of all files
+}
+
+convert_to_parquet <- function(directory, format="psv") {
   # Get a list of all files (including sub-folders) in the directory
   all_files <- dir_ls(directory, regexp = "\\.psv$", recurse = TRUE)
   
@@ -28,7 +47,7 @@ convert_to_parquet <- function(directory) {
   # Loop over all files
   for (file in all_files) {
     # Read the file in pipe-delimited format
-    data <- read_delim(file, delim = "|")
+    data <- read_input(format)
     
     # Define the output file name
     out_fn <- basename(file)
