@@ -39,6 +39,7 @@ jobs:
         Rscript parquet_converter.r testdata psv
         Rscript parquet_converter.r testdata csv
         Rscript parquet_converter.r testdata xlsx
+        Rscript parquet_converter.r testdata sas7bdat
 
     - name: List files in testdata folder
       run: |
