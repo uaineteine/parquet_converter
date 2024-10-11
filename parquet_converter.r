@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) != 1) {
-  stop("Only one argument must be supplied (input file).\n", call. = FALSE)
+if (length(args) != 2) {
+  stop("Two arguments must be supplied the (1) input directory and the (2) input format 'csv', 'psv', 'sas' and 'xlsx'.\n", call. = FALSE)
 } 
 
 # Suppress warnings globally
@@ -74,4 +74,4 @@ convert_to_parquet <- function(directory, format="psv") {
   cat("Parquet conversion completed!\n")
 }
 
-convert_to_parquet(args[1])
+convert_to_parquet(args[1], args[2])

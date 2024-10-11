@@ -33,7 +33,7 @@ jobs:
 
     - name: Run R script
       run: |
-        Rscript parquet_converter.r testdata
+        Rscript parquet_converter.r testdata psv
 
     - name: List files in testdata folder
       run: |
