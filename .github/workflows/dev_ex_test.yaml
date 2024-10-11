@@ -1,9 +1,8 @@
-name: Execution Test
+name: Dev Execution Test
 
 on:
   push:
     branches:
-      - master
       - development
 
 jobs:
