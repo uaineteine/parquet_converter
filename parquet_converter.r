@@ -21,7 +21,7 @@ read_input <- function(filepath, format) {
     data <- read_csv(filepath)
   } else if (format == "psv") {
     data <- read_delim(file, delim = "|")
-  } else if (format == "sas'") {
+  } else if (format == "sas7bdat'") {
     data <- read_sas(file)
   } else if (format == "xlsx") {
     data <- read_excel(file)
@@ -31,9 +31,18 @@ read_input <- function(filepath, format) {
   return (data)
 }
 
-convert_to_parquet <- function(directory, format="psv") {
+search_files <- function(directory, format) {
+  #add the dot
+  file_xtn <- paste0("." + format)
+
+  #idetnify all files with regex
+  all_files <- dir_ls(directory, regexp = paste0("\\", file_xtn, "$"), recurse = TRUE)
+  return (all_files)
+}
+
+convert_to_parquet <- function(directory, format="csv") {
   # Get a list of all files (including sub-folders) in the directory
-  all_files <- dir_ls(directory, regexp = "\\.psv$", recurse = TRUE)
+  all_files <- search_files(directory, format)
   
   # Calculate the total size of all files
   total_size <- sum(file_size(all_files))

@@ -4,7 +4,7 @@ This script converts an input directory of target file types to Parquet format i
 
 * CSV
 * PSV
-* EXCEL/XLSX
+* XLSX
 * SAS7BDAT
 
 ## Requirements
