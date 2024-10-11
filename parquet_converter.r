@@ -52,7 +52,7 @@ convert_to_parquet <- function(directory, format="psv") {
   # Loop over all files
   for (file in all_files) {
     # Read the file in pipe-delimited format
-    data <- read_input(format)
+    data <- read_input(file, format)
     
     # Define the output file name
     out_fn <- basename(file)
