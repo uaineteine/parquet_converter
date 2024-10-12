@@ -7,4 +7,4 @@ $rsc = "H:\Program Files\R\R-4.3.2\bin\x64\Rscript.exe"
 
 #convert the parquet files
 $rspt_conv = "E:/GNAF/process_supply/parquet_convert.r"
-& $rsc --vanilla $rspt_conv $directory_path
+& $rsc --vanilla $rspt_conv $directory_path psv

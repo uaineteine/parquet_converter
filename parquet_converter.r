@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) != 1) {
-  stop("Only one argument must be supplied (input file).\n", call. = FALSE)
+if (length(args) != 2) {
+  stop("Two arguments must be supplied the (1) input directory and the (2) input format 'csv', 'psv', 'sas' and 'xlsx'.\n", call. = FALSE)
 } 
 
 # Suppress warnings globally
@@ -11,12 +11,41 @@ suppressMessages(suppressWarnings({
 
 # Load necessary libraries
 library(readr)
+library(readxl)
 library(arrow)
+library(haven)
 library(fs)
+}))
 
-convert_to_parquet <- function(directory) {
+#write_xpt(df, "data4.sas7bdat")
+
+read_input <- function(filepath, format) {
+  if (format == "csv") {
+    data <- read_csv(filepath)
+  } else if (format == "psv") {
+    data <- read_delim(filepath, delim = "|")
+  } else if (format == "sas7bdat") {
+    data <- read_sas(filepath)
+  } else if (format == "xlsx") {
+    data <- read_excel(filepath)
+  } else {
+    stop("Unsupported file format: ", format, call. = FALSE)
+  }
+  return (data)
+}
+
+search_files <- function(directory, format) {
+  #add the dot
+  file_xtn <- paste0(".", format)
+
+  #idetnify all files with regex
+  all_files <- dir_ls(directory, regexp = paste0("\\", file_xtn, "$"), recurse = TRUE)
+  return (all_files)
+}
+
+convert_to_parquet <- function(directory, format="csv") {
   # Get a list of all files (including sub-folders) in the directory
-  all_files <- dir_ls(directory, regexp = "\\.psv$", recurse = TRUE)
+  all_files <- search_files(directory, format)
   
   # Calculate the total size of all files
   total_size <- sum(file_size(all_files))
@@ -28,7 +57,7 @@ convert_to_parquet <- function(directory) {
   # Loop over all files
   for (file in all_files) {
     # Read the file in pipe-delimited format
-    data <- read_delim(file, delim = "|")
+    data <- read_input(file, format)
     
     # Define the output file name
     out_fn <- basename(file)
@@ -50,6 +79,4 @@ convert_to_parquet <- function(directory) {
   cat("Parquet conversion completed!\n")
 }
 
-convert_to_parquet(args[1])
-
-}))
+convert_to_parquet(args[1], format=args[2])

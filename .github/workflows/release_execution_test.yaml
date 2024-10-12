@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - development
 
 jobs:
   run-rscript:
@@ -19,6 +18,10 @@ jobs:
       with:
         r-version: '4.1.0'  # Specify the R version you need
 
+    - name: Install readxl package
+      run: |
+        Rscript -e 'install.packages("readxl", repos="https://cloud.r-project.org")'
+        
     - name: Install readr package
       run: |
         Rscript -e 'install.packages("readr", repos="https://cloud.r-project.org")'
@@ -27,13 +30,20 @@ jobs:
       run: |
         Rscript -e 'install.packages("arrow", repos="https://cloud.r-project.org")'
 
+    - name: Install haven package
+      run: |
+        Rscript -e 'install.packages("haven", repos="https://cloud.r-project.org")'
+
     - name: Install fs package
       run: |
         Rscript -e 'install.packages("fs", repos="https://cloud.r-project.org")'
 
-    - name: Run R script
+    - name: Run R conversions
       run: |
-        Rscript parquet_converter.r testdata
+        Rscript parquet_converter.r testdata psv
+        Rscript parquet_converter.r testdata csv
+        Rscript parquet_converter.r testdata xlsx
+        Rscript parquet_converter.r testdata sas7bdat
 
     - name: List files in testdata folder
       run: |

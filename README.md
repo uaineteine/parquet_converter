@@ -1,13 +1,20 @@
-# Parquet Converter v1.0 [![Execution Test](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml/badge.svg)](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml)
+# Parquet Converter v2.0 [![Execution Test](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml/badge.svg)](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml)
 
-This script converts all pipe-delimited (`.psv`) files in a specified directory to Parquet format.
+This script converts an input directory of target file types to Parquet format in that same directory. It can handle the following data types:
+
+* CSV
+* PSV
+* XLSX
+* SAS7BDAT
 
 ## Requirements
 
 - R (version 3.5 or higher)
 - The following R packages:
+  - `readxl`
   - `readr`
   - `arrow`
+  - `haven`
   - `fs`
 
 ## Usage
@@ -15,7 +22,7 @@ This script converts all pipe-delimited (`.psv`) files in a specified directory 
 To run the script, use the following command:
 
 ```sh
-./convert_to_parquet.R <directory>
+./convert_to_parquet.R <directory> <format>
 ```
 
 Replace <directory> with the path to the directory containing the .psv files.
@@ -39,7 +46,7 @@ Completion Message: Prints a message upon completion of the conversion process.
 
 ## Example
 ```sh
-./convert_to_parquet.R /path/to/your/directory
+./convert_to_parquet.R /path/to/your/directory psv
 ```
 
 This command will convert all .psv files in /path/to/your/directory to Parquet format.
