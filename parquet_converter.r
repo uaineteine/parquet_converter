@@ -24,7 +24,7 @@ read_input <- function(filepath, format) {
     data <- read_csv(filepath)
   } else if (format == "psv") {
     data <- read_delim(filepath, delim = "|")
-  } else if (format == "sas7bdat'") {
+  } else if (format == "sas7bdat") {
     data <- read_sas(filepath)
   } else if (format == "xlsx") {
     data <- read_excel(filepath)
