@@ -21,9 +21,9 @@ library(fs)
 
 read_input <- function(filepath, format) {
   if (format == "csv") {
-    data <- read_csv(filepath)
+    data <- read_csv(filepath, show_col_types = FALSE)
   } else if (format == "psv") {
-    data <- read_delim(filepath, delim = "|")
+    data <- read_delim(filepath, delim = "|", show_col_types = FALSE)
   } else if (format == "sas7bdat") {
     data <- read_sas(filepath)
   } else if (format == "xlsx") {

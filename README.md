@@ -1,4 +1,4 @@
-# Parquet Converter v2.0 [![Execution Test](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml/badge.svg)](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml)
+# Parquet Converter v2.0.1 [![Execution Test](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml/badge.svg)](https://github.com/uaineteine/parquet_converter/actions/workflows/execution_test.yaml)
 
 This script converts an input directory of target file types to Parquet format in that same directory. It can handle the following data types:
 
@@ -22,7 +22,7 @@ This script converts an input directory of target file types to Parquet format i
 To run the script, use the following command:
 
 ```sh
-./convert_to_parquet.R <directory> <format>
+Rscript ./convert_to_parquet.R <directory> <format>
 ```
 
 Replace <directory> with the path to the directory containing the .psv files.
@@ -46,7 +46,7 @@ Completion Message: Prints a message upon completion of the conversion process.
 
 ## Example
 ```sh
-./convert_to_parquet.R /path/to/your/directory psv
+Rscript ./convert_to_parquet.R /path/to/your/directory psv
 ```
 
 This command will convert all .psv files in /path/to/your/directory to Parquet format.
